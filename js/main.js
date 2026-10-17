@@ -6,6 +6,16 @@
   for (var k=0;k<36;k++){ var b=document.createElement('i'); b.style.height=(12+Math.abs(Math.sin(k*.6))*70)+'px'; w.appendChild(b); }
   if (!reduce) { var bars=w.children, tt=0; (function anim(){ tt+=.05; for (var j=0;j<bars.length;j++) bars[j].style.height=(10+Math.abs(Math.sin(j*.5+tt)*Math.cos(j*.17+tt*.6))*90)+'px'; requestAnimationFrame(anim); })(); }
 
+  // Gameplay loops: play only while on screen, and never on their own with reduced motion.
+  document.querySelectorAll('video.loop').forEach(function(v){
+    if (reduce || !('IntersectionObserver' in window)) { v.controls = true; return; }
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { v.play().catch(function(){ v.controls = true; }); } else { v.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(v);
+  });
+
   // Screenshot lightbox. <dialog> gives Esc-to-close, focus containment and focus return for free.
   var box = document.getElementById('lightbox');
   var img = box.querySelector('img'), cap = box.querySelector('figcaption');

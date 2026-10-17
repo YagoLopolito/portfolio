@@ -72,6 +72,26 @@ test('screenshot lightbox works with the keyboard', async ({ page }) => {
   await expect(thumb).toBeFocused();
 });
 
+test('gameplay loop plays in view and its sources exist', async ({ page, request }) => {
+  await page.goto('./');
+  const video = page.locator('video.loop');
+  for (const src of await video.locator('source').evaluateAll((s) => s.map((e) => (e as HTMLSourceElement).src))) {
+    expect((await request.get(src)).status(), src).toBe(200);
+  }
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => !v.paused && v.currentTime > 0.2), { timeout: 15_000 }).toBe(true);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.muted && v.loop)).toBe(true);
+});
+
+test('gameplay loop does not autoplay with reduced motion', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('./');
+  const video = page.locator('video.loop');
+  await video.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1500);
+  expect(await video.evaluate((v: HTMLVideoElement) => ({ paused: v.paused, controls: v.controls }))).toEqual({ paused: true, controls: true });
+});
+
 for (const width of [390, 768, 1440]) {
   test(`no horizontal scroll at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });

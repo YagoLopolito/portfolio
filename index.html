@@ -94,11 +94,16 @@
       <div class="media">
         <figure class="screen">
           <div class="bar"><i></i><i></i><i></i><span>yago-lopolito.itch.io/futsbol</span></div>
-          <button class="shot" type="button" data-full="assets/img/predio-match.webp" data-caption="Live match: goal, commentary, stands and crowd-trouble risk" aria-label="Enlarge screenshot: El Predio match">
-            <img src="assets/img/predio-match-800.webp" srcset="assets/img/predio-match-800.webp 800w, assets/img/predio-match.webp 1600w" sizes="(max-width: 860px) calc(100vw - 32px), 624px" width="1600" height="899" loading="lazy" alt="El Predio match: a goal banner over the pitch, full stands, live commentary and the club's money and reputation at the top">
-          </button>
+          <!-- Autoplay is started from JS (only in view, never with prefers-reduced-motion); without JS the poster shows. -->
+          <video class="loop" muted loop playsinline preload="none" width="1280" height="720" poster="assets/img/predio-match-800.webp" aria-label="El Predio gameplay: a goal in a live match, the camera follows the play and the celebration">
+            <source src="assets/video/predio-match.webm" type="video/webm">
+            <source src="assets/video/predio-match.mp4" type="video/mp4">
+          </video>
         </figure>
         <ul class="thumbs" aria-label="More El Predio screenshots">
+          <li><button class="shot" type="button" data-full="assets/img/predio-match.webp" data-caption="Live match: goal, commentary, stands and crowd-trouble risk" aria-label="Enlarge screenshot: El Predio match">
+            <img src="assets/img/predio-match-800.webp" width="800" height="450" loading="lazy" alt="El Predio match: a goal banner over the pitch, full stands, live commentary and the club's money and reputation at the top">
+            <span>Match</span></button></li>
           <li><button class="shot" type="button" data-full="assets/img/predio-continue.webp" data-caption="Main menu over the 3D club grounds: continue a saved club or start a new one" aria-label="Enlarge screenshot: main menu">
             <img src="assets/img/predio-continue-800.webp" width="640" height="360" loading="lazy" alt="El Predio main menu over an aerial view of the club grounds, with a saved club and Continue and New game buttons">
             <span>Main menu</span></button></li>
