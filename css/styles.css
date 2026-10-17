@@ -113,7 +113,6 @@ section{display:flex;flex-direction:column;gap:32px}
 .copy:hover{border-color:var(--accent)}
 .copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .copied{margin-left:8px;color:var(--pass);font-size:12px}
-.btn.ghost{border-style:dashed;color:var(--muted);background:transparent;cursor:default}
-.btn.ghost:hover{border-color:var(--line)}
+
 footer{font:400 12px var(--mono);color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){.btn{transition:border-color .15s}}

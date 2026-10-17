@@ -1,6 +1,6 @@
 // Turns raw captures (screenshots/raw/*.png) into the WebP files the site uses:
 //   assets/img/<name>.webp      max 1600px wide
-//   assets/img/<name>-800.webp  800px wide (half size for mobile captures), for srcset
+//   assets/img/<name>-800.webp  800px wide (half size for smaller sources), for srcset
 // Quality starts at 82 and steps down only if a file would exceed 250 KB.
 //
 //   node scripts/optimize.mjs                 every raw capture
@@ -13,13 +13,16 @@ import { basename } from 'node:path';
 const RAW = 'screenshots/raw';
 const OUT = 'assets/img';
 const MAX_BYTES = 250 * 1024;
-// The small variant is 800px, or half the source for narrow (mobile) captures.
+// The small variant is 800px, or half the source when it is narrower than 1600px (mobile, itch.io captures).
 const sizesFor = (w) => [{ width: 1600, suffix: '' }, { width: Math.min(800, Math.round(Math.min(w, 1600) / 2)), suffix: '-800' }];
 
 // name -> { left, top, width, height } applied before resizing.
 export const CROPS = {
   // Keep the advisor card; drop the empty "external guides" block below it and the side gutters.
   'platinoob-ai-plan': { left: 400, top: 40, width: 2080, height: 1110 },
+  // Captures of the itch.io player: trim the light page border around the canvas.
+  'predio-continue': { left: 0, top: 1, width: 1279, height: 720 },
+  'predio-club-creator': { left: 0, top: 0, width: 1280, height: 719 },
 };
 
 mkdirSync(OUT, { recursive: true });
