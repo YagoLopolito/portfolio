@@ -11,7 +11,7 @@ function watch(page: Page) {
 }
 
 test('page loads with the main content', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await expect(page).toHaveTitle(/Yago Lopolito/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Yago\s*Lopolito/);
   await expect(page.getByRole('heading', { name: 'Featured projects' })).toBeVisible();
@@ -23,7 +23,7 @@ test('page loads with the main content', async ({ page }) => {
 
 test('every image loads, has alt text and reserved dimensions', async ({ page }) => {
   const problems = watch(page);
-  await page.goto('/');
+  await page.goto('./');
   // Lazy images only load near the viewport: make them eager, then wait for all of them.
   await page.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach((i) => ((i as HTMLImageElement).loading = 'eager')));
   const images = page.locator('main img');
@@ -41,7 +41,7 @@ test('every image loads, has alt text and reserved dimensions', async ({ page })
 });
 
 test('project links respond', async ({ page, request }) => {
-  await page.goto('/');
+  await page.goto('./');
   const hrefs = await page.locator('#projects a[href^="http"]').evaluateAll((as) => [...new Set(as.map((a) => (a as HTMLAnchorElement).href))]);
   expect(hrefs.length).toBeGreaterThan(0);
   for (const href of hrefs) {
@@ -52,14 +52,14 @@ test('project links respond', async ({ page, request }) => {
 
 test('no console errors on load and scroll', async ({ page }) => {
   const problems = watch(page);
-  await page.goto('/');
+  await page.goto('./');
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 50)); } });
   await page.waitForLoadState('networkidle');
   expect(problems).toEqual([]);
 });
 
 test('screenshot lightbox works with the keyboard', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   const thumb = page.getByRole('button', { name: 'Enlarge screenshot: AI platinum plan' });
   await thumb.focus();
   await page.keyboard.press('Enter');
@@ -75,7 +75,7 @@ test('screenshot lightbox works with the keyboard', async ({ page }) => {
 for (const width of [390, 768, 1440]) {
   test(`no horizontal scroll at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto('/');
+    await page.goto('./');
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBe(0);
   });

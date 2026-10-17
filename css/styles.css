@@ -62,7 +62,6 @@ section{display:flex;flex-direction:column;gap:32px}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font:400 12px/1 var(--mono);border:1px solid var(--line);border-radius:4px;padding:6px 8px;color:var(--muted)}
 .ev{display:flex;flex-wrap:wrap;gap:10px}
-.btn .hint{opacity:.7}
 
 /* real screenshots */
 .media{display:flex;flex-direction:column;gap:12px;min-width:0}
