@@ -2,7 +2,7 @@ node_modules/
 .auth/
 # raw, unoptimized captures (only optimized WebP in assets/img is committed)
 assets/raw/
-screenshots/raw/
+screenshots/
 test-results/
 playwright-report/
 lighthouse/*.json

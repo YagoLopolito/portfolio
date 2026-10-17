@@ -1,6 +1,6 @@
 // Turns raw captures (screenshots/raw/*.png) into the WebP files the site uses:
 //   assets/img/<name>.webp      max 1600px wide
-//   assets/img/<name>-800.webp  800px wide, for srcset
+//   assets/img/<name>-800.webp  800px wide (half size for mobile captures), for srcset
 // Quality starts at 82 and steps down only if a file would exceed 250 KB.
 //
 //   node scripts/optimize.mjs                 every raw capture
@@ -13,10 +13,14 @@ import { basename } from 'node:path';
 const RAW = 'screenshots/raw';
 const OUT = 'assets/img';
 const MAX_BYTES = 250 * 1024;
-const SIZES = [{ width: 1600, suffix: '' }, { width: 800, suffix: '-800' }];
+// The small variant is 800px, or half the source for narrow (mobile) captures.
+const sizesFor = (w) => [{ width: 1600, suffix: '' }, { width: Math.min(800, Math.round(Math.min(w, 1600) / 2)), suffix: '-800' }];
 
 // name -> { left, top, width, height } applied before resizing.
-export const CROPS = {};
+export const CROPS = {
+  // Keep the advisor card; drop the empty "external guides" block below it and the side gutters.
+  'platinoob-ai-plan': { left: 400, top: 40, width: 2080, height: 1110 },
+};
 
 mkdirSync(OUT, { recursive: true });
 
@@ -38,7 +42,8 @@ for (const f of files) {
   let img = sharp(`${RAW}/${f}`);
   if (CROPS[name]) img = img.extract(CROPS[name]);
   const input = await img.png().toBuffer();
-  for (const { width, suffix } of SIZES) {
+  const { width: srcW } = await sharp(input).metadata();
+  for (const { width, suffix } of sizesFor(srcW)) {
     const out = `${OUT}/${name}${suffix}.webp`;
     const r = await encode(input, width, out);
     const flag = statSync(out).size > MAX_BYTES ? '  !! over 250 KB' : '';
