@@ -6,7 +6,11 @@ function watch(page: Page) {
   page.on('console', (m) => { if (m.type() === 'error') problems.push(`console: ${m.text()}`); });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
   page.on('response', (r) => { if (r.status() >= 400) problems.push(`${r.status()} ${r.url()}`); });
-  page.on('requestfailed', (r) => problems.push(`failed ${r.url()} (${r.failure()?.errorText})`));
+  page.on('requestfailed', (r) => {
+    // Browsers routinely abort media range requests (pause, scroll away, page close); that is not a failure.
+    if (r.resourceType() === 'media' && r.failure()?.errorText === 'net::ERR_ABORTED') return;
+    problems.push(`failed ${r.url()} (${r.failure()?.errorText})`);
+  });
   return problems;
 }
 
