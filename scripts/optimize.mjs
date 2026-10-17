@@ -23,6 +23,10 @@ export const CROPS = {
   // Captures of the itch.io player: trim the light page border around the canvas.
   'predio-continue': { left: 0, top: 1, width: 1279, height: 720 },
   'predio-club-creator': { left: 0, top: 0, width: 1280, height: 719 },
+  // Phone captures of FIFA Club Manager (1080x2340): drop the Android status bar and gesture bar.
+  'fifa-home': { left: 0, top: 98, width: 1080, height: 2199 },
+  'fifa-lineup': { left: 0, top: 98, width: 1080, height: 2199 },
+  'fifa-rankings': { left: 0, top: 98, width: 1080, height: 2199 },
 };
 
 mkdirSync(OUT, { recursive: true });
