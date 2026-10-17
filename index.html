@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yago Lopolito Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/main.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-text">
+      <span class="label">Portfolio · Buenos Aires, Argentina</span>
+      <h1>Yago <span>Lopolito</span></h1>
+      <p class="role">QA Engineer &amp; Game Developer</p>
+      <p class="lede">Several years in web QA and test automation, now focused on game QA and performance testing, while studying Video Game Programming at Escuela Da Vinci. I build my own games and web apps and ship them with the same test discipline I apply at work.</p>
+      <div class="links">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn" href="https://github.com/YagoLopolito">GitHub</a>
+      </div>
+    </div>
+    <div class="stack-wall" aria-hidden="true">
+      <div class="tile t1"><div class="pitch" style="height:100%"><canvas id="mini" width="480" height="300" style="height:100%;aspect-ratio:auto"></canvas></div></div>
+      <div class="tile t2">
+        <div class="plat" style="height:100%">
+          <div class="plat-top"><img src="assets/img/platinoob-logo.webp" alt=""><span class="label">Library</span></div>
+          <div class="posters" style="grid-template-columns:repeat(3,1fr)">
+            <div class="poster p1" style="--p:100%"><img class="pt" src="assets/img/platinum-trophy.webp" alt=""></div>
+            <div class="poster p2" style="--p:86%"></div>
+            <div class="poster p3" style="--p:64%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tile t3"><img src="assets/img/platinum-trophy.webp" alt=""></div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="head"><h2>Featured projects</h2><span class="label">Shipped</span></div>
+
+    <article class="feature">
+      <div class="screen" aria-label="Preview of the Platinoob interface">
+        <div class="bar"><i></i><i></i><i></i><span>platinoob.vercel.app · illustrative preview</span></div>
+        <div class="plat">
+          <div class="plat-top"><img src="assets/img/platinoob-logo.webp" alt="Platinoob"><span class="label">PSN · Steam</span></div>
+          <div class="plat-stats">
+            <div><b>208</b><small>Games</small></div>
+            <div><b>2,076</b><small>Trophies</small></div>
+            <div><b>31</b><small>Platinums</small></div>
+            <div><b>14</b><small>Lists</small></div>
+          </div>
+          <span class="label">Close to platinum</span>
+          <div class="posters">
+            <div class="poster p1" style="--p:100%"><img class="pt" src="assets/img/platinum-trophy.webp" alt="">Bloodborne</div>
+            <div class="poster p2" style="--p:94%">Ghost of Tsushima</div>
+            <div class="poster p3" style="--p:88%">The Witcher 3</div>
+            <div class="poster p4" style="--p:83%">Uncharted 4</div>
+            <div class="poster p5" style="--p:81%">Persona 5</div>
+          </div>
+          <div class="advisor">
+            <span class="label">AI platinum plan</span>
+            <div class="miss"><span>Next trophy</span><b>Missable · Act 2 ending</b></div>
+            <div class="miss"><span>Runs needed</span><b>1 run + NG+</b></div>
+            <div class="miss"><span>Difficulty challenge</span><b>Start on Hard</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="notes">
+        <span class="status pass">Live</span>
+        <h3>Platinoob</h3>
+        <span class="kind">Web app · PlayStation &amp; Steam trophy tracker</span>
+        <p>A Letterboxd for games. Link your PSN or Steam account, the app syncs every trophy, and an AI plans your road to each platinum.</p>
+        <ul class="checks">
+          <li>Daily background sync of PSN and Steam, with token expiry and rate limits handled</li>
+          <li>AI advisor: missable trophies, trophy order, single run vs. New Game+</li>
+          <li>Diary, reviews, lists, likes, activity feed and a photo/video gallery</li>
+          <li>Playwright E2E suite on every pull request, written test strategy, WCAG contrast audit</li>
+        </ul>
+        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Playwright</span><span>GitHub Actions</span></div>
+        <div class="ev"><a class="btn primary" href="https://platinoob.vercel.app/perfil">Open live app</a><a class="btn" href="https://github.com/YagoLopolito/proyecto-platino">Source</a></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="screen" aria-label="Animated match preview from El Predio">
+        <div class="bar"><i></i><i></i><i></i><span>El Predio · web build</span></div>
+        <div class="pitch">
+          <canvas id="match" width="800" height="500"></canvas>
+          <div class="score">Barrio FC <span id="sc">0 – 0</span> Deportivo Sur <em id="mn">12'</em></div>
+          <div class="feedline" id="feed">Kick-off at El Predio. The stands are filling up.</div>
+        </div>
+      </div>
+      <div class="notes">
+        <span class="status pass">Playable</span>
+        <h3>El Predio</h3>
+        <span class="kind">Unity game · Incremental football club manager</span>
+        <p>Take a neighbourhood club from a dirt pitch to the top division. Matches are simulated and directed live, with VAR, penalties, commentary and crowd chaos.</p>
+        <ul class="checks">
+          <li>Match simulator with a scripted director and physics playback</li>
+          <li>10 live match events and 7 minigames</li>
+          <li>Fully procedural audio, versioned saves with migrations</li>
+          <li>Built in patches from playtester reports; web build shipped to itch.io</li>
+        </ul>
+        <div class="tags"><span>Unity</span><span>C#</span><span>WebGL</span><span>itch.io</span></div>
+        <div class="ev"><a class="btn primary" href="https://yago-lopolito.itch.io/futsbol">Play on itch.io</a><a class="btn" href="https://github.com/YagoLopolito/FutIncremental">Source</a></div>
+      </div>
+    </article>
+
+    <div class="grid2">
+      <article class="card">
+        <div class="screen">
+          <div class="bar"><i></i><i></i><i></i><span>FIFA Club Manager · illustrative preview</span></div>
+          <div class="squad">
+            <div class="row"><span class="pos gk">GK</span><span>Goalkeeper</span><span class="label">23 apps</span><span class="ovr">84</span></div>
+            <div class="row"><span class="pos df">CB</span><span>Centre back</span><span class="label">On loan</span><span class="ovr">79</span></div>
+            <div class="row"><span class="pos mf">CM</span><span>Playmaker</span><span class="label">9 assists</span><span class="ovr">86</span></div>
+            <div class="row"><span class="pos fw">ST</span><span>Striker</span><span class="label">17 goals</span><span class="ovr">88</span></div>
+            <div class="ai"><b>AI tactics:</b> switch to 4-2-3-1 and sign a left back under 24.</div>
+          </div>
+        </div>
+        <span class="status pass">Live</span>
+        <h3>FIFA Club Manager</h3>
+        <p>Squad manager for Liga Profesional and Serie A careers: multi-user invites, season stats, loans, AI tactics and transfers, stats imported from screenshots.</p>
+        <div class="tags"><span>Vanilla JS</span><span>Supabase</span><span>Vercel</span><span>LLM APIs</span></div>
+        <div class="ev"><a class="btn primary" href="https://fifa-manager-eta.vercel.app/">Open live app</a></div>
+      </article>
+
+      <article class="card">
+        <div class="screen">
+          <div class="bar"><i></i><i></i><i></i><span>login.cy.ts</span></div>
+<div class="code"><span class="k">describe</span>(<span class="s">'Login'</span>, () =&gt; {
+  <span class="k">it</span>(<span class="s">'rejects a wrong password'</span>, () =&gt; {
+    cy.<span class="f">visit</span>(<span class="s">'/login'</span>)
+    cy.<span class="f">findByLabelText</span>(<span class="s">'Email'</span>).<span class="f">type</span>(user.email)
+    cy.<span class="f">findByLabelText</span>(<span class="s">'Password'</span>).<span class="f">type</span>(<span class="s">'wrong'</span>)
+    cy.<span class="f">findByRole</span>(<span class="s">'button'</span>, { name: <span class="s">'Sign in'</span> }).<span class="f">click</span>()
+    cy.<span class="f">findByRole</span>(<span class="s">'alert'</span>).<span class="f">should</span>(<span class="s">'be.visible'</span>)
+  })
+})
+<span class="c">// ✓ 46 pages · PDF + interactive web</span></div>
+        </div>
+        <span class="status pass">Done</span>
+        <h3>Cypress Automation Guide</h3>
+        <p>A 46-page Cypress + TypeScript course I wrote to onboard a junior teammate, generated as a PDF and an interactive page from one source with a Python + Playwright pipeline.</p>
+        <div class="tags"><span>Cypress</span><span>TypeScript</span><span>Python</span><span>Playwright</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>In development</h2><span class="label">Prototypes</span></div>
+    <div class="dev">
+      <article class="devcard">
+        <div class="devart grid3d" aria-hidden="true">
+          <span class="unit" style="left:22%;top:40%;background:#7d8cff"></span>
+          <span class="unit" style="left:40%;top:62%;background:#5fd39a"></span>
+          <span class="unit" style="left:66%;top:30%;background:#ff7a7a"></span>
+          <span class="unit" style="left:74%;top:58%;background:#ff7a7a"></span>
+        </div>
+        <div class="devbody">
+          <span class="status wip">In progress</span>
+          <h3>La Base</h3>
+          <span class="kind">Unity 3D · Co-op tactical roguelike</span>
+          <p>Turn-based combat on a 3D grid, four classes, node-based runs and a hub. Team of two: I program, a partner does the art.</p>
+        </div>
+      </article>
+      <article class="devcard">
+        <div class="devart wave" id="wave" aria-hidden="true"></div>
+        <div class="devbody">
+          <span class="status wip">Research</span>
+          <h3>Synesthesia</h3>
+          <span class="kind">Unity · Rhythm game</span>
+          <p>Analyses any song, separates the instruments and turns them into visuals and gameplay. Pipeline: Demucs → librosa → Unity.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>Skills</h2></div>
+    <div class="skills">
+      <div><span class="label">Testing</span><ul><li>Functional &amp; regression testing</li><li>Game QA &amp; performance testing</li><li>Bug lifecycle &amp; reporting</li><li>Test strategy &amp; case design</li></ul></div>
+      <div><span class="label">Automation</span><ul><li>Playwright</li><li>Cypress</li><li>TypeScript</li><li>CI with GitHub Actions</li></ul></div>
+      <div><span class="label">Game dev</span><ul><li>Unity</li><li>C#</li><li>Gameplay systems</li><li>WebGL builds</li></ul></div>
+      <div><span class="label">Web &amp; tools</span><ul><li>Next.js, React, JavaScript</li><li>Supabase, Postgres</li><li>Vercel, Git</li><li>LLM APIs</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>About &amp; contact</h2></div>
+    <div class="about">
+      <p>I started in web QA, writing test plans and automation suites. Games pulled me in, so I moved into game QA with a focus on performance and went back to school to learn how games are built from the inside. Testing makes me a more careful developer, and building games makes me a sharper tester. I work in Spanish and English.</p>
+      <div class="contact">
+        <span>GitHub · <a href="https://github.com/YagoLopolito">github.com/YagoLopolito</a></span>
+        <span class="todo">Email · [add your email]</span>
+        <span class="todo">LinkedIn · [add your LinkedIn URL]</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Yago Lopolito</footer>
+</div>
+</body>
+</html>
