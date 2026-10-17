@@ -32,7 +32,17 @@
 <script src="js/main.js" defer></script>
 </head>
 <body>
-<main class="wrap">
+<nav class="topnav" aria-label="Primary">
+  <div class="topnav-in">
+    <a class="brand" href="#top">Yago<span>Lopolito</span></a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="wrap" id="top">
   <header class="hero">
     <div class="hero-text">
       <span class="label">Portfolio · Buenos Aires, Argentina</span>
@@ -45,8 +55,8 @@
       </div>
     </div>
     <div class="stack-wall">
-      <div class="tile t1"><img src="assets/img/predio-match-800.webp" srcset="assets/img/predio-match-800.webp 800w, assets/img/predio-match.webp 1600w" sizes="(max-width: 760px) 78vw, 380px" width="1600" height="899" fetchpriority="high" alt="El Predio match in progress: a goal banner over the pitch with the stands full"></div>
-      <div class="tile t2"><img src="assets/img/platinoob-library-800.webp" srcset="assets/img/platinoob-library-800.webp 800w, assets/img/platinoob-library.webp 1600w" sizes="(max-width: 760px) 70vw, 340px" width="1600" height="1000" alt="Platinoob library page with a row of game covers marked as currently playing"></div>
+      <div class="tile t1"><img src="assets/img/predio-match-800.webp" srcset="assets/img/predio-match-800.webp 800w, assets/img/predio-match.webp 1600w" sizes="(max-width: 860px) 78vw, 46vw" width="1600" height="899" fetchpriority="high" alt="El Predio match in progress: a goal banner over the pitch with the stands full"></div>
+      <div class="tile t2"><img src="assets/img/platinoob-library-800.webp" srcset="assets/img/platinoob-library-800.webp 800w, assets/img/platinoob-library.webp 1600w" sizes="(max-width: 860px) 70vw, 40vw" width="1600" height="1000" alt="Platinoob library page with a row of game covers marked as currently playing"></div>
       <div class="tile t3"><img src="assets/img/platinoob-library-mobile-800.webp" width="390" height="844" alt="Platinoob library on a phone, with the bottom tab bar"></div>
     </div>
   </header>
@@ -59,7 +69,7 @@
         <figure class="screen">
           <div class="bar"><i></i><i></i><i></i><span>platinoob.vercel.app/biblioteca</span></div>
           <button class="shot" type="button" data-full="assets/img/platinoob-library.webp" data-caption="Library: every PSN and Steam game, synced daily" aria-label="Enlarge screenshot: Platinoob library">
-            <img src="assets/img/platinoob-library-800.webp" srcset="assets/img/platinoob-library-800.webp 800w, assets/img/platinoob-library.webp 1600w" sizes="(max-width: 860px) calc(100vw - 32px), 624px" width="1600" height="1000" loading="lazy" alt="Platinoob library: sync status, PSN and Steam filters, a row of games being played and AI recommendations">
+            <img src="assets/img/platinoob-library-800.webp" srcset="assets/img/platinoob-library-800.webp 800w, assets/img/platinoob-library.webp 1600w" sizes="(max-width: 860px) calc(100vw - 32px), 56vw" width="1600" height="1000" loading="lazy" alt="Platinoob library: sync status, PSN and Steam filters, a row of games being played and AI recommendations">
           </button>
         </figure>
         <ul class="thumbs" aria-label="More Platinoob screenshots">
@@ -133,7 +143,7 @@
         <figure class="screen">
           <div class="bar"><i></i><i></i><i></i><span>fifa-manager-eta.vercel.app</span></div>
           <button class="shot" type="button" data-full="assets/img/fifa-squad.webp" data-caption="Full squad: ratings, market value, season stats, transfers and loans" aria-label="Enlarge screenshot: FIFA Club Manager squad">
-            <img src="assets/img/fifa-squad-800.webp" srcset="assets/img/fifa-squad-800.webp 800w, assets/img/fifa-squad.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 546px" width="1600" height="1000" loading="lazy" alt="FIFA Club Manager squad table for Boca Juniors with positions, ratings, market values and transfer and loan actions">
+            <img src="assets/img/fifa-squad-800.webp" srcset="assets/img/fifa-squad-800.webp 800w, assets/img/fifa-squad.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 46vw" width="1600" height="1000" loading="lazy" alt="FIFA Club Manager squad table for Boca Juniors with positions, ratings, market values and transfer and loan actions">
           </button>
         </figure>
         <span class="status pass">Live</span>
@@ -171,7 +181,7 @@
     <div class="dev">
       <article class="devcard">
         <button class="shot devart" type="button" data-full="assets/img/rogue-combat.webp" data-caption="Combat on the island biome: turn order, HP, action bar and combat log" aria-label="Enlarge screenshot: Roguelike Co-op combat">
-          <img src="assets/img/rogue-combat-800.webp" srcset="assets/img/rogue-combat-800.webp 800w, assets/img/rogue-combat.webp 1600w" sizes="(max-width: 700px) calc(100vw - 32px), 550px" width="1600" height="900" loading="lazy" alt="Roguelike Co-op turn-based combat on a 3D grid on an island, with two player units, enemies, the turn order and the action bar">
+          <img src="assets/img/rogue-combat-800.webp" srcset="assets/img/rogue-combat-800.webp 800w, assets/img/rogue-combat.webp 1600w" sizes="(max-width: 700px) calc(100vw - 32px), 46vw" width="1600" height="900" loading="lazy" alt="Roguelike Co-op turn-based combat on a 3D grid on an island, with two player units, enemies, the turn order and the action bar">
         </button>
         <div class="devbody">
           <span class="status wip">In progress</span>
@@ -200,7 +210,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="skills">
     <div class="head"><h2>Skills</h2></div>
     <div class="skills">
       <div><span class="label">Testing</span><ul><li>Functional &amp; regression testing</li><li>Game QA &amp; performance testing</li><li>Bug lifecycle &amp; reporting</li><li>Test strategy &amp; case design</li></ul></div>
@@ -210,14 +220,14 @@
     </div>
   </section>
 
-  <section>
+  <section id="contact">
     <div class="head"><h2>About &amp; contact</h2></div>
     <div class="about">
       <p>I started in web QA, writing test plans and automation suites. Games pulled me in, so I moved into game QA with a focus on performance and went back to school to learn how games are built from the inside. Testing makes me a more careful developer, and building games makes me a sharper tester. I work in Spanish and English.</p>
       <div class="contact">
-        <span>GitHub · <a href="https://github.com/YagoLopolito">github.com/YagoLopolito</a></span>
-        <span class="email">Email · <a href="mailto:yagolopolito@gmail.com" id="email">yagolopolito@gmail.com</a> <button class="copy" type="button" data-copy="yagolopolito@gmail.com" aria-label="Copy email address">Copy</button><span class="copied" role="status" aria-live="polite"></span></span>
-        <span>LinkedIn · <a href="https://www.linkedin.com/in/yago-lopolito-822b75224/">linkedin.com/in/yago-lopolito</a></span>
+        <span><b>GitHub</b> <a href="https://github.com/YagoLopolito">github.com/YagoLopolito</a></span>
+        <span class="email"><b>Email</b> <a href="mailto:yagolopolito@gmail.com" id="email">yagolopolito@gmail.com</a> <button class="copy" type="button" data-copy="yagolopolito@gmail.com" aria-label="Copy email address">Copy</button><span class="copied" role="status" aria-live="polite"></span></span>
+        <span><b>LinkedIn</b> <a href="https://www.linkedin.com/in/yago-lopolito-822b75224/">linkedin.com/in/yago-lopolito</a></span>
       </div>
     </div>
   </section>
