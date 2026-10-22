@@ -14,15 +14,15 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body)}
 /* Fluid width: fills large monitors (capped for ultrawides), with gutters that grow with the viewport. */
-.wrap{max-width:1760px;margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px));padding-block:0 72px;display:flex;flex-direction:column;gap:clamp(72px,8vw,128px)}
+.wrap{max-width:1760px;margin:0 auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px));display:flex;flex-direction:column}
 @media (min-width:1600px){body{font-size:17px}}
 
 /* top nav */
 .topnav{position:sticky;top:0;z-index:10;background:rgba(12,14,21,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.topnav-in{max-width:1760px;margin:0 auto;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.topnav-in{max-width:1760px;margin:0 auto;height:calc(var(--nav-h) - 1px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 .brand{font:700 18px/1 var(--display);color:var(--ink);text-decoration:none;display:flex;gap:6px}
 .brand span{color:var(--accent)}
 .topnav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(14px,2.5vw,32px)}
@@ -57,7 +57,7 @@ section{display:flex;flex-direction:column;gap:32px}
 .head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px}
 .head h2{font-size:clamp(28px,4vw,40px);font-weight:600}
 .feature{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(36px,4.5vw,80px);align-items:center}
-#projects{gap:clamp(32px,5vw,80px)}
+#projects{gap:0}
 .feature.flip .media{order:2}
 @media (max-width:860px){.feature,.feature.flip{grid-template-columns:1fr}.feature.flip .media{order:0}}
 .screen{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 30px 80px rgba(0,0,0,.45);min-width:0}
@@ -137,10 +137,24 @@ section{display:flex;flex-direction:column;gap:32px}
 footer{font:400 12px var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
 @media (prefers-reduced-motion:no-preference){.btn{transition:border-color .15s}}
 
+/* Scroll snap: the page is a stack of slides, each filling the screen below the sticky nav. Strict on
+   desktop; on narrower screens the stacked slides are taller than the viewport, so snapping only
+   kicks in when you stop near one. */
+html{scroll-snap-type:y proximity}
+@media (min-width:861px){html{scroll-snap-type:y mandatory}}
+.slide{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));padding-block:clamp(24px,4vh,56px);scroll-snap-align:start;align-content:center}
+div.slide:not(.grid2),section.slide{display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,3vw,48px)}
+div.slide.outro{gap:clamp(40px,5vh,72px)}
+/* Desktop: trim the tallest media so each slide fits one screen. */
+@media (min-width:861px){
+  .feature .screen .shot img{aspect-ratio:16/9;object-fit:cover;object-position:top}
+  .devart{aspect-ratio:auto;height:clamp(150px,22vh,320px)}
+  .thumbs.mini{grid-template-columns:repeat(2,minmax(0,130px))}
+}
+
 /* Phones: give every block room to breathe, turn projects into cards and screenshot rows into swipeable strips. */
 @media (max-width:640px){
   :root{--nav-h:54px}
-  .wrap{gap:64px;padding-bottom:48px}
   .topnav ul{gap:16px}
   .topnav ul a{font-size:12px;letter-spacing:.04em}
   .brand{font-size:16px}
