@@ -25,6 +25,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body
 .topnav-in{max-width:1760px;margin:0 auto;height:calc(var(--nav-h) - 1px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 .brand{font:700 18px/1 var(--display);color:var(--ink);text-decoration:none;display:flex;gap:6px}
 .brand span{color:var(--accent)}
+.brand b{font-weight:inherit}.brand i{font-style:normal}
 .topnav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(14px,2.5vw,32px)}
 .topnav ul a{font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:8px 0}
 .topnav ul a:hover{color:var(--ink)}
@@ -77,6 +78,26 @@ section{display:flex;flex-direction:column;gap:32px}
 .tags span{font:400 12px/1 var(--mono);border:1px solid var(--line);border-radius:4px;padding:6px 8px;color:var(--muted)}
 .ev{display:flex;flex-wrap:wrap;gap:10px}
 
+/* experience: a vertical timeline (dot per job, line between them) beside a small education card */
+.career{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:clamp(32px,4.5vw,80px);align-items:start}
+@media (max-width:860px){.career{grid-template-columns:1fr}}
+.timeline{--tl-gap:clamp(28px,4.5vh,48px);list-style:none;margin:0;padding:0;display:grid;gap:var(--tl-gap)}
+.job{position:relative;padding-left:36px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.job::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;border:2px solid var(--muted);background:var(--bg)}
+.job.current::before{border-color:var(--pass);background:var(--pass);box-shadow:0 0 0 4px rgba(95,211,154,.18)}
+.job:not(:last-child)::after{content:"";position:absolute;left:5px;top:25px;bottom:calc(-1 * var(--tl-gap) + 6px);width:2px;background:var(--line)}
+.when{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;min-height:26px}
+.when .status{align-self:center}
+.job h3{font-size:clamp(24px,2.6vw,34px);font-weight:700}
+.org{margin:0;font:600 17px/1.3 var(--display);color:var(--accent)}
+.job .checks{max-width:70ch}
+.edu{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:20px;display:grid;gap:16px}
+.edu ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.edu li{display:flex;flex-direction:column;gap:4px;font:400 13px var(--mono);color:var(--muted)}
+.edu li+li{border-top:1px solid var(--line);padding-top:18px}
+.edu b{font:600 18px/1.25 var(--display);color:var(--ink)}
+.edu .status{margin-top:6px}
+
 /* real screenshots */
 .media{display:flex;flex-direction:column;gap:12px;min-width:0}
 .shot{display:block;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:zoom-in;text-align:left}
@@ -127,6 +148,10 @@ section{display:flex;flex-direction:column;gap:32px}
 .skills ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}
 .about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px}
 .about p{margin:0;max-width:62ch}
+.about-text{display:flex;flex-direction:column;gap:20px}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:400 14px/1.5 var(--mono);color:var(--muted)}
+.facts li{padding-left:18px;position:relative}
+.facts li::before{content:"·";position:absolute;left:4px;color:var(--accent)}
 .contact{font:400 15px var(--mono);display:grid;gap:10px;align-content:start}
 .contact b{font-weight:500;color:var(--muted);display:inline-block;min-width:88px}
 .copy{margin-left:6px;padding:3px 8px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--ink);font:500 12px var(--mono);cursor:pointer}
@@ -163,6 +188,9 @@ div.slide.outro{gap:clamp(40px,5vh,72px)}
   .hero h1{font-size:clamp(44px,14vw,60px)}
   .lede{font-size:16px;line-height:1.65}
   .links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+  .links .btn:last-child:nth-child(odd){grid-column:1/-1}
+  .job{padding-left:28px}
+  .edu{padding:18px}
   .btn{justify-content:center;padding:13px 16px;min-height:46px}
   .stack-wall{aspect-ratio:1/.82}
   section{gap:24px}
@@ -201,4 +229,6 @@ div.slide.outro{gap:clamp(40px,5vh,72px)}
   .lightbox{max-width:100vw;width:100vw;border-radius:0;border-inline:0}
   .lightbox figcaption{padding:12px 110px 12px 12px;font-size:12px}
 }
+/* Four nav links need the room on small phones: the brand collapses to its "YL" monogram. */
+@media (max-width:480px){.brand i{display:none}.brand{gap:1px}}
 @media (max-width:360px){.topnav ul{gap:12px}.topnav ul a{font-size:11px;letter-spacing:0}.brand{font-size:15px}}
