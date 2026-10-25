@@ -25,6 +25,20 @@ test('page loads with the main content', async ({ page }) => {
   await expect(page.getByText('[add your')).toHaveCount(0);
 });
 
+test('experience timeline and nav anchors', async ({ page }) => {
+  await page.goto('./');
+  const nav = page.getByRole('navigation', { name: 'Primary' });
+  await expect(nav.locator('ul a')).toHaveText(['Projects', 'Experience', 'Skills', 'Contact']);
+  for (const href of await nav.locator('ul a').evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
+    await expect(page.locator(href!), href!).toHaveCount(1);
+  }
+  const exp = page.locator('#experience');
+  await expect(exp.getByRole('heading', { level: 3 })).toHaveText(['Junior Game QA Engineer', 'QA Engineer', 'Education']);
+  await expect(exp.getByText('EPAM Systems')).toBeVisible();
+  await expect(exp.getByText('Solvd Inc.')).toBeVisible();
+  await expect(exp.getByRole('link', { name: '46-page Cypress guide' })).toHaveAttribute('href', '#cypress-guide');
+});
+
 test('every image loads, has alt text and reserved dimensions', async ({ page }) => {
   const problems = watch(page);
   await page.goto('./');
